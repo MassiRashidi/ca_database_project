@@ -1,0 +1,4 @@
+Flask==2.2.2
+Flask-PyMySQL==0.2.2
+PyMySQL==1.0.2
+Werkzeug==2.2.2

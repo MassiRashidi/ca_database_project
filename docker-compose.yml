@@ -1,25 +1,17 @@
-# Version du format docker-compose
-version: '3.8'
-
-# Définition de nos services (conteneurs)
 services:
-  # 1. Le service pour notre application web en Python/Flask
   web:
-    build: .  # Construit l'image Docker à partir du Dockerfile dans le dossier courant
+    build: .
     ports:
-      - "5000:5000"  # Lie le port 5000 de ta machine au port 5000 du conteneur
+      - "5001:5000"
     volumes:
-      - .:/app  # Synchronise le dossier courant avec le dossier /app dans le conteneur
+      - .:/app
     depends_on:
-      - db  # Indique que ce service doit attendre que le service 'db' soit prêt
+      - db
 
-  # 2. Le service pour notre base de données MySQL
   db:
-    image: mysql:5.7  # Utilise une image MySQL officielle
+    image: mariadb:10.5 # On utilise MariaDB pour la compatibilité avec ton Mac
     environment:
-      MYSQL_ROOT_PASSWORD: 'mon_mot_de_passe_secret' # Définit le mot de passe root
-      MYSQL_DATABASE: 'imovies' # Crée automatiquement la base de données 'imovies'
+      MYSQL_ROOT_PASSWORD: 'test'
+      MYSQL_DATABASE: 'imovies'
     volumes:
-      - ./imovies_users.dump:/docker-entrypoint-initdb.d/init.sql # Copie le dump pour l'importation au démarrage
-    ports:
-      - "3306:3306" # Lie le port de la DB pour un accès direct si besoin
+      - ./imovies_users.dump.txt:/docker-entrypoint-initdb.d/init.sql
