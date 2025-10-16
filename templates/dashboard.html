@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord - iMovies CA</title>
+</head>
+<body>
+    <h1>Bienvenue, {{ user.firstname }} !</h1>
+    
+    <h2>Vos informations</h2>
+    <p>
+        <strong>User ID:</strong> {{ user.uid }}<br>
+        <strong>Prénom:</strong> {{ user.firstname }}<br>
+        <strong>Nom:</strong> {{ user.lastname }}<br>
+        <strong>Email:</strong> {{ user.email }}<br>
+    </p>
+
+    <hr>
+
+    <h2>Générer un nouveau certificat</h2>
+    <p>Cliquez sur le bouton ci-dessous pour générer un nouveau certificat basé sur ces informations.</p>
+    <button>Générer mon certificat</button>
+
+</body>
+</html>
