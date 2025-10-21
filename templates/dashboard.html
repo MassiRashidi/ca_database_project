@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tableau de bord - iMovies CA</title>
+    <title>Dashboard - iMovies CA</title>
 </head>
 <body>
-    <h1>Bienvenue, {{ user.firstname }} !</h1>
-    
-    <h2>Vos informations</h2>
-    <p>
-        <strong>User ID:</strong> {{ user.uid }}<br>
-        <strong>Prénom:</strong> {{ user.firstname }}<br>
-        <strong>Nom:</strong> {{ user.lastname }}<br>
-        <strong>Email:</strong> {{ user.email }}<br>
-    </p>
+    <h1>Welcome, {{ user.firstname }} !</h1>
+
+    <p><a href="{{ url_for('logout') }}">Log out</a></p>
+    <hr>
+
+    <form action="{{ url_for('update_info') }}" method="post">
+        <p>
+            <strong>User ID:</strong> {{ user.uid }}<br>
+        </p>
+        <p>
+            <label for="firstname">First Name:</label><br>
+            <input type="text" id="firstname" name="firstname" value="{{ user.firstname }}"><br>
+        </p>
+        <p>
+            <label for="lastname">Last Name:</label><br>
+            <input type="text" id="lastname" name="lastname" value="{{ user.lastname }}"><br>
+        </p>
+        <p>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+        </p>
+        <p>
+            <button type="submit">Save Changes</button>
+        </p>
+    </form>
 
     <hr>
 
-    <h2>Générer un nouveau certificat</h2>
-    <p>Cliquez sur le bouton ci-dessous pour générer un nouveau certificat basé sur ces informations.</p>
-    <button>Générer mon certificat</button>
+    <h2>Generate New Certificate</h2>
+    <p>Click the button below to generate and download your certificate.</p>
 
+    <form action="/generate_certificate" method="post">
+        <button type="submit">Generate My Certificate</button>
+    </form>
 </body>
 </html>

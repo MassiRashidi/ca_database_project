@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - iMovies CA</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.firstname }} !</h1>
+    
+    <h2>informations</h2>
+    <p>
+        <strong>User ID:</strong> {{ user.uid }}<br>
+        <strong>Name:</strong> {{ user.firstname }}<br>
+        <strong>Last Name:</strong> {{ user.lastname }}<br>
+        <strong>Email:</strong> {{ user.email }}<br>
+    </p>
+
+    <hr>
+
+    <h2>Generate New Certificate</h2>
+    <p>Click the button below to generate and download your certificate.</p>
+
+    <form action="/generate_certificate" method="post">
+        <button type="submit">Generate My Certificate</button>
+    </form>
+</body>
+</html>

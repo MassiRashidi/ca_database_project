@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Connexion - iMovies CA</title>
 </head>
 <body>
-    <h1>Portail de Certification iMovies</h1>
-    <h2>Veuillez vous connecter</h2>
-    
-    <form method="post">
+    <h1>iMovies Certification Portal</h1>
+
+    <h2>Login with password</h2>
+    <form action="/login" method="post">
         <label for="username">User ID:</label><br>
         <input type="text" id="username" name="username"><br><br>
         
@@ -17,5 +17,14 @@
         
         <input type="submit" value="Se connecter">
     </form>
+
+    <hr>
+
+    <h2>Connexion with Certificate</h2>
+    <p>If you have already installed a certificate, log in here.</p>
+    <a href="/cert_login">
+        <button>Log in with my certificate</button>
+    </a>
+
 </body>
 </html>

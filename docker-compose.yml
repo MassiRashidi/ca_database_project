@@ -1,17 +1,30 @@
 services:
   web:
     build: .
-    ports:
-      - "5001:5000"
+    
     volumes:
       - .:/app
     depends_on:
       - db
+      
+    command: python CA_Give.py
 
   db:
-    image: mariadb:10.5 # On utilise MariaDB pour la compatibilité avec ton Mac
+    image: mariadb:10.5
     environment:
       MYSQL_ROOT_PASSWORD: 'test'
       MYSQL_DATABASE: 'imovies'
     volumes:
       - ./imovies_users.dump.txt:/docker-entrypoint-initdb.d/init.sql
+    
+  # NGNIX
+  nginx:
+    image: nginx:latest
+    ports:
+      - "5001:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    
+      - ./ca_secrets:/etc/nginx/ca_secrets:ro
+    depends_on:
+      - web
